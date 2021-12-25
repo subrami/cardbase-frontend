@@ -6,11 +6,13 @@ import {
     Text,
     Avatar,
     initialColorMode,
+    IconButton,
+    Table,
 } from '@chakra-ui/react'
 import { useHook } from 'react'
 import React, { useState } from 'react'
-import { FiHome, FiCreditCard, FiHash, FiZap } from 'react-icons/fi'
-import balanceChart from '../components/balance-chart'
+import { FiHome, FiCreditCard, FiHash, FiZap, FiCalendar } from 'react-icons/fi'
+import BalanceChart from '../components/myChart'
 
 export default function Dashboard() {
     return (
@@ -107,14 +109,14 @@ export default function Dashboard() {
                     fontWeight='normal'
                     mb='5'
                     letterSpacing='tight'
-                    mb='2em'
+                    mb='1em'
                 >
                     Welcome back,{' '}
                     <Flex fontWeight='bold' display='inline-flex'>
                         Rami.
                     </Flex>
                 </Heading>
-                <Flex ml='6' flexDir={'column'}>
+                <Flex ml='6' height='250' flexDir={'column'}>
                     <Text fontSize='l' color='gray' fontSize='large'>
                         My Balance
                     </Text>
@@ -122,19 +124,26 @@ export default function Dashboard() {
                         fontSize='3xl'
                         fontWeight='bold'
                         letterSpacing='tight'
+                        mb='3'
                     >
-                        $8,910.21
+                        $7,510.21
                     </Text>
+                    <BalanceChart height='50' />
                 </Flex>
-                <balanceChart />
-                <Flex justifyContent='space-between' mt='30vh' ml='6'>
+                <Flex justifyContent='space-between' ml='6' mt='6em'>
                     <Flex alignItems='flex-end'>
                         <Heading as='h2' size='lg' letterSpacing='tight' mr='4'>
                             Transactions
                         </Heading>
-                        <Text fontSize='md' color='gray'>
+                        <Text fontSize='sm' color='gray'>
                             Dec 2021
                         </Text>
+                    </Flex>
+                    <IconButton icon={<FiCalendar />} />
+                </Flex>
+                <Flex flexDirection={'column'}>
+                    <Flex overflow='auto'>
+                        <Table variant='unstyled'></Table>
                     </Flex>
                 </Flex>
             </Flex>
