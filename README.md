@@ -1,7 +1,7 @@
 
 ## cardbase
 
-just learning more about chakraui's components through this lil frontend.
+just learning more about chakraui's components through a credit card managing web app.
 
 run the development server:
 
