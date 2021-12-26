@@ -13,13 +13,29 @@ import {
     Tr,
     Tbody,
     Td,
+    Divider,
 } from '@chakra-ui/react'
 import React, { useState } from 'react'
-import { FiHome, FiCreditCard, FiHash, FiZap, FiCalendar } from 'react-icons/fi'
+import {
+    FiHome,
+    FiCreditCard,
+    FiHash,
+    FiZap,
+    FiCalendar,
+    FiChevronDown,
+    FiChevronUp,
+} from 'react-icons/fi'
 import BalanceChart from '../components/myChart'
 
 export default function Dashboard() {
-    const [extend, changeExtend] = useState('hide')
+    const [extraTransactions, changeExtra] = useState('hide')
+    const handleExtendClick = () => {
+        if (extraTransactions == 'show') {
+            changeExtra('none')
+        } else {
+            changeExtra('show')
+        }
+    }
 
     return (
         <Flex h='100vh' flexDir='row' overflow='hidden' maxWidth='2000px'>
@@ -260,7 +276,132 @@ export default function Dashboard() {
                                     </Td>
                                 </Tr>
                             </Tbody>
+                            {extraTransactions == 'show' && (
+                                <>
+                                    <Tr>
+                                        <Td>
+                                            <Flex align='center'>
+                                                <Avatar
+                                                    size='sm'
+                                                    mr='3'
+                                                    src='amazon.jpeg'
+                                                />
+                                                <Flex flexDir='column'>
+                                                    <Heading size='sm'>
+                                                        Amazon
+                                                    </Heading>
+                                                    <Text
+                                                        fontSize='sm'
+                                                        color='gray'
+                                                    >
+                                                        Yesterday at 1:40 PM
+                                                    </Text>
+                                                </Flex>
+                                            </Flex>
+                                        </Td>
+                                        <Td>Electronic Devices</Td>
+                                        <Td isNumeric fontWeight='bold'>
+                                            +$28
+                                        </Td>
+                                        <Td isNumeric>
+                                            <Text
+                                                fontWeight='bold'
+                                                display='inline-table'
+                                            >
+                                                -$242
+                                            </Text>
+                                            .00
+                                        </Td>
+                                    </Tr>
+                                    <Tr>
+                                        <Td>
+                                            <Flex align='center'>
+                                                <Avatar
+                                                    size='sm'
+                                                    mr='3'
+                                                    src='twitch.png'
+                                                />
+                                                <Flex flexDir='column'>
+                                                    <Heading size='sm'>
+                                                        Twitch
+                                                    </Heading>
+                                                    <Text
+                                                        fontSize='sm'
+                                                        color='gray'
+                                                    >
+                                                        Yesterday at 8:27 AM
+                                                    </Text>
+                                                </Flex>
+                                            </Flex>
+                                        </Td>
+                                        <Td>Online Platform</Td>
+                                        <Td isNumeric fontWeight='bold'>
+                                            +$1
+                                        </Td>
+                                        <Td isNumeric>
+                                            <Text
+                                                fontWeight='bold'
+                                                display='inline-table'
+                                            >
+                                                -$35
+                                            </Text>
+                                            .00
+                                        </Td>
+                                    </Tr>
+                                    <Tr>
+                                        <Td>
+                                            <Flex align='center'>
+                                                <Avatar
+                                                    size='sm'
+                                                    mr='3'
+                                                    src='linkedin.png'
+                                                />
+                                                <Flex flexDir='column'>
+                                                    <Heading size='sm'>
+                                                        LinkedIn
+                                                    </Heading>
+                                                    <Text
+                                                        fontSize='sm'
+                                                        color='gray'
+                                                    >
+                                                        Dec 23rd at 2:20 PM
+                                                    </Text>
+                                                </Flex>
+                                            </Flex>
+                                        </Td>
+                                        <Td>Social Media</Td>
+                                        <Td isNumeric fontWeight='bold'>
+                                            +$3
+                                        </Td>
+                                        <Td isNumeric>
+                                            <Text
+                                                fontWeight='bold'
+                                                display='inline-table'
+                                            >
+                                                -$42
+                                            </Text>
+                                            .20
+                                        </Td>
+                                    </Tr>
+                                </>
+                            )}
                         </Table>
+                    </Flex>
+                    <Flex alignItems='center'>
+                        <Divider bg='gray' />
+                        <IconButton
+                            colorScheme='red'
+                            size='md'
+                            icon={
+                                extraTransactions == 'show' ? (
+                                    <FiChevronUp />
+                                ) : (
+                                    <FiChevronDown />
+                                )
+                            }
+                            onClick={handleExtendClick}
+                        />
+                        <Divider colorScheme='light' bg='gray' />
                     </Flex>
                 </Flex>
             </Flex>
