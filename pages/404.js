@@ -1,5 +1,5 @@
 /*
-    nextjs custom 404 page
+    nextjs custom 404
     return dashboard each time
 */
 
