@@ -8,13 +8,19 @@ import {
     initialColorMode,
     IconButton,
     Table,
+    Thead,
+    Th,
+    Tr,
+    Tbody,
+    Td,
 } from '@chakra-ui/react'
-import { useHook } from 'react'
 import React, { useState } from 'react'
 import { FiHome, FiCreditCard, FiHash, FiZap, FiCalendar } from 'react-icons/fi'
 import BalanceChart from '../components/myChart'
 
 export default function Dashboard() {
+    const [extend, changeExtend] = useState('hide')
+
     return (
         <Flex h='100vh' flexDir='row' overflow='hidden' maxWidth='2000px'>
             {/*Column 1*/}
@@ -22,7 +28,7 @@ export default function Dashboard() {
                 width='15%'
                 flexDirection='column'
                 alignItems='center'
-                bg='#1D1C1C'
+                bg='#0e1111'
                 color='white'
             >
                 <Heading
@@ -105,12 +111,7 @@ export default function Dashboard() {
                 color='black'
                 backgroundColor={'white'}
             >
-                <Heading
-                    fontWeight='normal'
-                    mb='5'
-                    letterSpacing='tight'
-                    mb='1em'
-                >
+                <Heading fontWeight='normal' letterSpacing='tight' mb='1em'>
                     Welcome back,{' '}
                     <Flex fontWeight='bold' display='inline-flex'>
                         Rami.
@@ -130,7 +131,7 @@ export default function Dashboard() {
                     </Text>
                     <BalanceChart height='50' />
                 </Flex>
-                <Flex justifyContent='space-between' ml='6' mt='6em'>
+                <Flex justifyContent='space-between' ml='6' mt='8em'>
                     <Flex alignItems='flex-end'>
                         <Heading as='h2' size='lg' letterSpacing='tight' mr='4'>
                             Transactions
@@ -143,7 +144,123 @@ export default function Dashboard() {
                 </Flex>
                 <Flex flexDirection={'column'}>
                     <Flex overflow='auto'>
-                        <Table variant='unstyled'></Table>
+                        <Table variant='unstyled' mt='4'>
+                            <Thead>
+                                <Tr color='gray'>
+                                    <Th>Transaction sent to</Th>
+                                    <Th>Category</Th>
+                                    <Th isNumeric>Cashback</Th>
+                                    <Th isNumeric>Amount</Th>
+                                </Tr>
+                            </Thead>
+                            <Tbody>
+                                <Tr>
+                                    <Td>
+                                        <Flex align='center'>
+                                            <Avatar
+                                                size='sm'
+                                                mr='3'
+                                                src='amazon.jpeg'
+                                            />
+                                            <Flex flexDir='column'>
+                                                <Heading size='sm'>
+                                                    Amazon
+                                                </Heading>
+                                                <Text
+                                                    fontSize='sm'
+                                                    color='gray'
+                                                >
+                                                    Yesterday at 1:40 PM
+                                                </Text>
+                                            </Flex>
+                                        </Flex>
+                                    </Td>
+                                    <Td>Electronic Devices</Td>
+                                    <Td isNumeric fontWeight='bold'>
+                                        +$28
+                                    </Td>
+                                    <Td isNumeric>
+                                        <Text
+                                            fontWeight='bold'
+                                            display='inline-table'
+                                        >
+                                            -$242
+                                        </Text>
+                                        .00
+                                    </Td>
+                                </Tr>
+                                <Tr>
+                                    <Td>
+                                        <Flex align='center'>
+                                            <Avatar
+                                                size='sm'
+                                                mr='3'
+                                                src='twitch.png'
+                                            />
+                                            <Flex flexDir='column'>
+                                                <Heading size='sm'>
+                                                    Twitch
+                                                </Heading>
+                                                <Text
+                                                    fontSize='sm'
+                                                    color='gray'
+                                                >
+                                                    Yesterday at 8:27 AM
+                                                </Text>
+                                            </Flex>
+                                        </Flex>
+                                    </Td>
+                                    <Td>Online Platform</Td>
+                                    <Td isNumeric fontWeight='bold'>
+                                        +$1
+                                    </Td>
+                                    <Td isNumeric>
+                                        <Text
+                                            fontWeight='bold'
+                                            display='inline-table'
+                                        >
+                                            -$35
+                                        </Text>
+                                        .00
+                                    </Td>
+                                </Tr>
+                                <Tr>
+                                    <Td>
+                                        <Flex align='center'>
+                                            <Avatar
+                                                size='sm'
+                                                mr='3'
+                                                src='linkedin.png'
+                                            />
+                                            <Flex flexDir='column'>
+                                                <Heading size='sm'>
+                                                    LinkedIn
+                                                </Heading>
+                                                <Text
+                                                    fontSize='sm'
+                                                    color='gray'
+                                                >
+                                                    Dec 23rd at 2:20 PM
+                                                </Text>
+                                            </Flex>
+                                        </Flex>
+                                    </Td>
+                                    <Td>Social Media</Td>
+                                    <Td isNumeric fontWeight='bold'>
+                                        +$3
+                                    </Td>
+                                    <Td isNumeric>
+                                        <Text
+                                            fontWeight='bold'
+                                            display='inline-table'
+                                        >
+                                            -$42
+                                        </Text>
+                                        .20
+                                    </Td>
+                                </Tr>
+                            </Tbody>
+                        </Table>
                     </Flex>
                 </Flex>
             </Flex>
